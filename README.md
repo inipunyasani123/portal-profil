@@ -2,7 +2,7 @@
 
 Galeri demo company profile PintuWeb: kontraktor renovasi, perajin marmer, telur grosir, rental mobil, bengkel las, dan servis AC. Tiap demo punya 5 halaman isi dan satu halaman tambahan; portal ini menaut ke setiap halamannya dan menawarkan paket Standar UMKM.
 
-**Rencana alamat:** https://www.pintuweb.id/website-company-profile (asal `portal-profil.pintuweb.id`). Belum tayang saat berkas ini ditulis.
+**Alamat:** https://www.pintuweb.id/website-company-profile (asal `portal-profil.pintuweb.id`).
 
 ![Gambar pratinjau PortalProfil](public/og.jpg)
 
