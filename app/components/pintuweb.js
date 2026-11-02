@@ -4,6 +4,10 @@ import HARGA from './harga.json';
 /** Harga & kontak dibaca dari ./harga.json (salinan https://www.pintuweb.id/harga.json, diambil scripts/ambil-harga.mjs saat build). */
 const P = (slug) => HARGA.paket[slug];
 export const rp = (n) => `Rp${String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
+/** Rentang angka (1–3, 2–3) tidak boleh patah di tanda pisahnya saat teks turun baris. U+2060 = perekat kata, tak terlihat. */
+export const rapat = (t) => t.replace(/(\d)–(\d)/g, '$1–\u2060$2');
+/** Teks polos untuk data terstruktur (JSON-LD): tanpa karakter perekat. */
+export const polos = (t) => t.replace(/\u2060/g, '').replace(/\u00a0/g, ' ');
 const tanggal = (iso) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'][m - 1]} ${y}`; };
 
 export const PINTUWEB = 'https://www.pintuweb.id';
@@ -26,10 +30,10 @@ const STD = P('standar-umkm');
 export const PAKET = {
   slug: 'standar-umkm',
   nama: STD.nama,
-  subjudul: 'Website 3–5 halaman untuk usahamu',
+  subjudul: rapat('Website 3–5 halaman untuk usahamu'),
   mulai: rp(STD.mulai),
   sampai: rp(STD.sampai) + (STD.lebih ? '+' : ''),
-  waktu: STD.waktu,
+  waktu: rapat(STD.waktu),
   fitur: [
     '3–5 halaman lengkap: Beranda, Profil, Layanan, Kabar, dan Kontak',
     'Desain rapi, enak dibuka di HP',
@@ -38,7 +42,7 @@ export const PAKET = {
     'Teks dasar dan pengaturan dasar supaya mudah ditemukan di Google',
     '2× revisi desain',
     'Perawatan dan keamanan 1–3 bulan',
-  ],
+  ].map(rapat),
 };
 
 /** Halaman tambahan: harga per halaman dari harga.json (tambahan.halaman). */

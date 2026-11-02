@@ -4,7 +4,7 @@ import { Cap, FilterCap, Klip, Panah, Kerangka, Lembar } from './components/hias
 import { GaleriLain, SorotTautan } from './components/interaksi';
 import {
   PINTUWEB, PAKET, TAMBAHAN, HARGA_PER, WA_DISPLAY, JAM_KERJA, LANJUT, BACA, GALERI_LAIN,
-  URL_CUSTOM, URL_ARTIKEL_BEDA, wa,
+  URL_CUSTOM, URL_ARTIKEL_BEDA, wa, polos,
 } from './components/pintuweb';
 
 const WA_HERO = wa('Halo PintuWeb, saya tertarik website company profile untuk usaha saya. Boleh minta info?');
@@ -29,6 +29,7 @@ const ISI = [
 ];
 
 /** Tanya jawab: angka & tanggal dari harga.json, fakta lain dari PintuWeb/app/content/faq.ts dan lib/packages.ts. */
+// \u2060 setelah tanda – perlu karena tanda ini (BA) tetap membolehkan patah baris di depan spasi tak patah (\u00a0).
 const TANYA = [
   {
     q: 'Berapa lama pengerjaannya?',
@@ -48,7 +49,7 @@ const TANYA = [
   },
   {
     q: 'Bisakah menambah halaman?',
-    a: `Bisa. Halaman tambahan ${TAMBAHAN.mulai} – ${TAMBAHAN.sampai} ${TAMBAHAN.satuan}, dan fitur yang lebih besar kami bicarakan dulu.`,
+    a: `Bisa. Halaman tambahan ${TAMBAHAN.mulai}\u00a0–\u2060\u00a0${TAMBAHAN.sampai} ${TAMBAHAN.satuan}, dan fitur yang lebih besar kami bicarakan dulu.`,
   },
   {
     q: 'Apakah usaha di demo itu sungguhan?',
@@ -59,7 +60,7 @@ const TANYA = [
 const faqLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: TANYA.map((t) => ({ '@type': 'Question', name: t.q, acceptedAnswer: { '@type': 'Answer', text: t.a } })),
+  mainEntity: TANYA.map((t) => ({ '@type': 'Question', name: t.q, acceptedAnswer: { '@type': 'Answer', text: polos(t.a) } })),
 };
 
 function Logo({ sub = 'Company Profile', gelap = false }) {
@@ -217,7 +218,7 @@ export default function PortalProfil() {
                     <span className="indeks-tab label-mono">Halaman {i + 1}</span>
                     <h3 className="text-[1.75rem]">{s.judul}</h3>
                     <p className="mt-2 leading-relaxed">{s.teks}</p>
-                    <Kerangka jenis={s.jenis} />
+                    <div className="kerangka-slot"><Kerangka jenis={s.jenis} /></div>
                   </div>
                 </li>
               ))}
@@ -255,15 +256,15 @@ export default function PortalProfil() {
               <p className="mt-4 text-lg leading-relaxed">{PAKET.subjudul}. Cocok untuk usaha yang ingin dikenal dan mudah dihubungi.</p>
             </div>
             <article className="folio terang mx-auto mt-12 max-w-5xl" aria-label={`Penawaran paket ${PAKET.nama}`}>
-              <div className="grid gap-x-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+              <div className="grid grid-cols-[minmax(0,1fr)] gap-x-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
                 <div>
                   <div className="flex h-14 items-center gap-2.5"><Logo sub="Jasa pembuatan website" /></div>
                   <div className="flex h-7 items-center"><div className="kop-garis w-full text-meja" aria-hidden="true" /></div>
                   <dl className="surat-data">
                     <div><dt>Perihal</dt><dd>Penawaran website company profile</dd></div>
-                    <div>
+                    <div className="surat-harga">
                       <dt>Harga</dt>
-                      <dd className="harga-besar"><span>{PAKET.mulai}</span><span><span className="sampai">sampai</span> {PAKET.sampai}</span></dd>
+                      <dd className="harga-besar"><span>{PAKET.mulai}</span><span><span className="sampai">sampai</span> <span className="nw">{PAKET.sampai}</span></span></dd>
                     </div>
                     <div><dt>Pengerjaan</dt><dd>{PAKET.waktu}</dd></div>
                   </dl>

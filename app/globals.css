@@ -85,7 +85,7 @@
   /* pembatas antarbagian: garis kop tebal-tipis di puncak bagian (jarak atasnya dari padding bawah bagian sebelumnya) */
   .bagian-garis { padding-top: 0; }
   .bagian-garis::before {
-    content: ""; display: block; width: calc(100% - 2rem); max-width: 75rem; height: 7px; margin: 0 auto 2.75rem;
+    content: ""; display: block; width: calc(100% - 2rem); max-width: 72rem; height: 7px; margin: 0 auto 2.75rem;
     border-top: 3px solid rgb(183 157 98 / 0.6); border-bottom: 1px solid rgb(183 157 98 / 0.6);
   }
   @media (min-width: 640px) { .bagian-garis::before { width: calc(100% - 3rem); } }
@@ -210,6 +210,11 @@
     .map-grid { grid-template-columns: 7rem minmax(0, 1fr); gap: 0.75rem; }
     .map .tombol { padding-inline: 0.75rem; gap: 0.4rem; }
   }
+  /* 320 px: tab dan kolom potret dirapatkan sedikit lagi supaya teks tab dan tombol tidak keluar dari kotaknya */
+  @media (max-width: 339.98px) {
+    .tab { padding-inline: 0.1rem; }
+    .map-grid { grid-template-columns: 6.5rem minmax(0, 1fr); gap: 0.65rem; }
+  }
   .map .label-mono { color: var(--color-tinta-2); }
   .bidang { margin-top: 0.5rem; font-size: 0.875rem; font-weight: 700; line-height: 1.35; color: var(--color-tinta-2); }
   .kartu-teks { margin-top: 0.75rem; font-size: 0.9375rem; line-height: 1.55; }
@@ -238,8 +243,8 @@
   }
   .indeks-gelap { background: var(--color-meja-2); color: var(--color-krem); border-color: var(--color-map-3); }
   .indeks-gelap .indeks-tab { background: var(--color-map); }
-  .kerangka { display: block; width: 100%; height: auto; margin-top: auto; padding: 0.4rem; background: var(--color-kertas-2); border-radius: 0.25rem; }
-  .indeks > p + .kerangka { margin-top: 1rem; }
+  .kerangka-slot { display: flex; flex: 1 1 auto; align-items: flex-end; padding-top: 1rem; }
+  .kerangka { display: block; width: 100%; max-width: 36rem; height: auto; margin-inline: auto; padding: 0.4rem; background: var(--color-kertas-2); border-radius: 0.25rem; }
   .k-kertas { fill: var(--color-kertas); stroke: var(--color-tinta); stroke-width: 1.5; }
   .k-garis { fill: none; stroke: var(--color-tinta); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
   .k-isi { fill: var(--color-map); stroke: var(--color-tinta); stroke-width: 1.5; }
@@ -281,15 +286,18 @@
   @media (min-width: 640px) { .surat-data > div { grid-template-columns: 7rem minmax(0, 1fr); column-gap: 0.75rem; align-items: baseline; } }
   .surat-data dt { font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.06em; line-height: var(--baris); text-transform: uppercase; color: var(--color-tinta-2); }
   .surat-data dd { margin: 0; line-height: var(--baris); }
+  .surat-data > div.surat-harga { grid-template-columns: minmax(0, 1fr); }
   .surat-data dd.harga-besar { line-height: calc(var(--baris) * 2); }
-  .harga-besar { font-family: var(--font-display); font-size: clamp(2.2rem, 8.6vw, 2.7rem); color: var(--color-meja); }
-  .harga-besar > span { display: block; white-space: nowrap; }
+  .harga-besar { font-family: var(--font-display); font-size: clamp(1.6rem, 8.2vw, 2.7rem); color: var(--color-meja); }
+  .harga-besar > span { display: block; }
+  .nw { white-space: nowrap; }
   .harga-besar .sampai { font-family: var(--font-sans); font-size: 1rem; font-weight: 600; color: var(--color-tinta-2); }
   .surat-data > div + div { margin-top: var(--baris); }
   .daftar-paket { counter-reset: butir; list-style: none; margin: 0; padding: 0; }
   .daftar-paket li { counter-increment: butir; position: relative; padding-left: 2rem; }
   .daftar-paket li::before { content: counter(butir) "."; position: absolute; left: 0; font-family: var(--font-mono); font-weight: 700; color: var(--color-meja); }
   .folio .label-mono { line-height: var(--baris); }
+  @media (max-width: 359.98px) { .folio .tombol { padding-inline: 0.7rem; font-size: 0.85rem; } }
 
   /* tanya jawab */
   .tanya { background: var(--color-kertas); color: var(--color-tinta); border: 1px solid var(--color-map-3); border-radius: 0.25rem; padding: 1.15rem 1.15rem 1.25rem; }
