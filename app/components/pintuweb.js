@@ -49,6 +49,10 @@ export const PAKET = {
 const TB = HARGA.tambahan.halaman;
 export const TAMBAHAN = { nama: TB.nama, mulai: rp(TB.mulai), sampai: rp(TB.sampai), satuan: TB.satuan };
 
+/** Tulisan halaman Kabar yang ditulis PintuWeb: biaya per artikel dari harga.json (tambahan.artikel = ADDONS "Artikel blog SEO"). */
+const AR = HARGA.tambahan.artikel;
+export const ARTIKEL = { nama: AR.nama, mulai: rp(AR.mulai), sampai: rp(AR.sampai), satuan: AR.satuan };
+
 /** Galeri yang tayang di www.pintuweb.id/<path> (lihat lib/portals.ts di PintuWeb). */
 export const GALERI = [
   { path: 'landing-page', label: 'Landing Page' },

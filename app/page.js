@@ -3,7 +3,7 @@ import { demo, JUMLAH, alamat } from './components/profil-data';
 import { Cap, FilterCap, Klip, Panah, Kerangka, Lembar } from './components/hiasan';
 import { GaleriLain, SorotTautan } from './components/interaksi';
 import {
-  PINTUWEB, PAKET, TAMBAHAN, HARGA_PER, WA_DISPLAY, JAM_KERJA, LANJUT, BACA, GALERI_LAIN,
+  PINTUWEB, PAKET, TAMBAHAN, ARTIKEL, HARGA_PER, WA_DISPLAY, JAM_KERJA, LANJUT, BACA, GALERI_LAIN,
   URL_CUSTOM, URL_ARTIKEL_BEDA, wa, polos,
 } from './components/pintuweb';
 
@@ -24,11 +24,16 @@ const ISI = [
   { jenis: 'beranda', judul: 'Beranda', teks: 'Halaman pertama: tamu langsung tahu usahamu bergerak di bidang apa.', kelas: 'sm:col-span-2 lg:col-span-3' },
   { jenis: 'profil', judul: 'Profil', teks: 'Cerita usahamu: siapa kamu, sejak kapan berdiri, dan cara kerjamu.', kelas: 'lg:col-span-3' },
   { jenis: 'layanan', judul: 'Layanan atau Produk', teks: 'Daftar yang kamu tawarkan, supaya tamu tidak perlu bertanya satu per satu.', kelas: 'lg:col-span-2' },
-  { jenis: 'kabar', judul: 'Kabar', teks: 'Tulisan singkat berisi kabar usaha atau tips untuk pelangganmu.', kelas: 'lg:col-span-2' },
+  { jenis: 'kabar', judul: 'Kabar', teks: 'Tulisan singkat berisi kabar usaha atau tips untuk pelangganmu; tulisan di demo hanya contoh.', kelas: 'lg:col-span-2' },
   { jenis: 'kontak', judul: 'Kontak', teks: 'Formulir, tombol WhatsApp, dan peta, supaya tamu mudah menghubungimu.', kelas: 'lg:col-span-2' },
 ];
 
-/** Tanya jawab: angka & tanggal dari harga.json, fakta lain dari PintuWeb/app/content/faq.ts dan lib/packages.ts. */
+/**
+ * Tanya jawab: angka & tanggal dari harga.json, fakta lain dari PintuWeb/app/content/faq.ts dan lib/packages.ts.
+ * Jawaban soal tulisan Kabar: halamannya = packages.ts (standar-umkm: 3–5 halaman, Home/Profil/Layanan/Blog/Kontak);
+ * kirim tulisan sendiri = content/services.ts (company-profile: "Kirim tulisanmu lewat WhatsApp, kami yang unggah");
+ * biaya = harga.json tambahan.artikel. Jumlah tulisan awal yang termasuk paket tidak tertulis di sana, jadi tidak disebut.
+ */
 // \u2060 setelah tanda – perlu karena tanda ini (BA) tetap membolehkan patah baris di depan spasi tak patah (\u00a0).
 const TANYA = [
   {
@@ -50,6 +55,10 @@ const TANYA = [
   {
     q: 'Bisakah menambah halaman?',
     a: `Bisa. Halaman tambahan ${TAMBAHAN.mulai}\u00a0–\u2060\u00a0${TAMBAHAN.sampai} ${TAMBAHAN.satuan}, dan fitur yang lebih besar kami bicarakan dulu.`,
+  },
+  {
+    q: 'Apakah tulisan di halaman Kabar sudah termasuk?',
+    a: `Halamannya sudah termasuk di paket, tetapi tulisan di demo hanya contoh. Kamu bisa kirim tulisanmu sendiri lewat WhatsApp dan kami yang memasangnya, atau kami yang menulis dengan biaya ${ARTIKEL.mulai}\u00a0–\u2060\u00a0${ARTIKEL.sampai} ${ARTIKEL.satuan}.`,
   },
   {
     q: 'Apakah usaha di demo itu sungguhan?',
@@ -317,7 +326,7 @@ export default function PortalProfil() {
             <h2 id="judul-tanya" className="judul-bagian max-w-2xl">Tanya jawab</h2>
             <ul className="mt-12 grid gap-4 md:grid-cols-2">
               {TANYA.map((t) => (
-                <li key={t.q} className="tanya terang">
+                <li key={t.q} className="tanya terang md:odd:last:col-span-2">
                   <h3 className="tanya-q"><span className="tanda" aria-hidden="true">T</span>{t.q}</h3>
                   <p className="tanya-a"><span className="tanda" aria-hidden="true">J</span>{t.a}</p>
                 </li>
