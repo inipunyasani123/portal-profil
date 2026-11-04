@@ -58,7 +58,7 @@ const TANYA = [
   },
   {
     q: 'Apakah tulisan di halaman Kabar sudah termasuk?',
-    a: `Halamannya sudah termasuk di paket, tetapi tulisan di demo hanya contoh. Selama masa perawatan, kamu bisa kirim tulisanmu sendiri lewat WhatsApp dan kami yang memasangnya, atau kami yang menulis dengan biaya ${ARTIKEL.mulai}\u00a0–\u2060\u00a0${ARTIKEL.sampai} ${ARTIKEL.satuan}.`,
+    a: `Halamannya sudah termasuk di paket, tetapi tulisan di demo hanya contoh. Selama masa perawatan, kamu bisa kirim tulisanmu sendiri lewat WhatsApp dan kami yang memasangnya. Kalau mau kami yang menulis, biayanya ${ARTIKEL.mulai}\u00a0–\u2060\u00a0${ARTIKEL.sampai} ${ARTIKEL.satuan}.`,
   },
   {
     q: 'Apakah usaha di demo itu sungguhan?',
