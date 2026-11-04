@@ -23,7 +23,7 @@ Berkas usaha di atas meja kantor. Alas meja marun (satu-satunya warna dominan), 
 
 Data demo ada di `app/components/profil-data.js` (alamat, halaman, halaman tambahan). Jumlah demo di judul halaman dihitung dari data itu.
 
-Potret ponsel tiap demo ada di `public/images/demo/<slug>.webp`, dipotret dari halaman live dengan `scripts/potret.mjs`. Potret **las** dan **ac** masih sementara (belum dari live); lihat `public/images/SUMBER.md`. Varian WebP-nya dibuat `node scripts/static-images.mjs . --base /website-company-profile`.
+Potret ponsel tiap demo ada di `public/images/demo/<slug>.webp`, dipotret dari halaman live dengan `scripts/potret.mjs`. Varian WebP-nya dibuat `node scripts/static-images.mjs . --base /website-company-profile`.
 
 ## Halaman
 
