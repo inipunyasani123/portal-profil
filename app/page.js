@@ -31,7 +31,7 @@ const ISI = [
 /**
  * Tanya jawab: angka & tanggal dari harga.json, fakta lain dari PintuWeb/app/content/faq.ts dan lib/packages.ts.
  * Jawaban soal tulisan Kabar: halamannya = packages.ts (standar-umkm: 3–5 halaman, Home/Profil/Layanan/Blog/Kontak);
- * kirim tulisan sendiri = content/services.ts (company-profile: "Kirim tulisanmu lewat WhatsApp, kami yang unggah");
+ * kirim tulisan sendiri = content/services.ts (company-profile: "Selama masa perawatan, kirim tulisanmu lewat WhatsApp, kami yang unggah");
  * biaya = harga.json tambahan.artikel. Jumlah tulisan awal yang termasuk paket tidak tertulis di sana, jadi tidak disebut.
  */
 // \u2060 setelah tanda – perlu karena tanda ini (BA) tetap membolehkan patah baris di depan spasi tak patah (\u00a0).
@@ -58,7 +58,7 @@ const TANYA = [
   },
   {
     q: 'Apakah tulisan di halaman Kabar sudah termasuk?',
-    a: `Halamannya sudah termasuk di paket, tetapi tulisan di demo hanya contoh. Kamu bisa kirim tulisanmu sendiri lewat WhatsApp dan kami yang memasangnya, atau kami yang menulis dengan biaya ${ARTIKEL.mulai}\u00a0–\u2060\u00a0${ARTIKEL.sampai} ${ARTIKEL.satuan}.`,
+    a: `Halamannya sudah termasuk di paket, tetapi tulisan di demo hanya contoh. Selama masa perawatan, kamu bisa kirim tulisanmu sendiri lewat WhatsApp dan kami yang memasangnya, atau kami yang menulis dengan biaya ${ARTIKEL.mulai}\u00a0–\u2060\u00a0${ARTIKEL.sampai} ${ARTIKEL.satuan}.`,
   },
   {
     q: 'Apakah usaha di demo itu sungguhan?',
